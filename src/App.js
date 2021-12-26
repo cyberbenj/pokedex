@@ -34,7 +34,7 @@ function App() {
   const hidePokemon = () => setPokemon(null)
 
   if (pokemon !== null) {
-    return <Card id={pokemon.id} img={pokemon.img} name={pokemon.name} types={pokemon.types} hidePokemon={hidePokemon} />
+    return <Card id={pokemon.id} img={pokemon.img} sprite={pokemon.sprite} name={pokemon.name} types={pokemon.types} text={pokemon.text} hidePokemon={hidePokemon} />
   }
   
   return (
@@ -49,4 +49,3 @@ function App() {
 }
 
 export default App
-

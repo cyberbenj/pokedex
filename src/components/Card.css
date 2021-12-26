@@ -29,11 +29,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* background-color: #ffffff; */
     background: linear-gradient(#eef, #fee);
 }
 
-.card-image img{
+.card-image img {
     width: calc(100% - 30px);
     max-width: 475px;
     object-fit: contain;
@@ -45,24 +44,61 @@
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    padding: 15px 0;
+    padding-top: 15px;
+    padding-bottom: 5px;
     font-size: 32px;
 }
 
-.card-name .number{
+.card-name .number {
     margin-left: 10px;
     opacity: 0.5;
 }
 
-.card-types{
+.card-types {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-bottom: 15px;
 }
 
-.card-types .tag{
-    background-color: #fff;
+.card-types .tag {
+    background-color: rgba(255, 255, 255, .9);
+    border: 1px solid #ffffff;
+    color: rgba(0, 0, 0, .9);
     padding: 0px 7px;
     margin: 0 4px;
     border-radius: 3px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.card-text-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 40px;
+    margin: 15px;
+    /*border: 2px solid #ffffff;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, .07);*/
+}
+
+.card-text-box img {
+    object-fit: none;
+}
+
+.card-text-box p {
+    color: #ffffff;
+    text-align: center;
+    text-align: left;
+    line-height: 27px;
+    /*border-top: 2px solid #ffffff;
+    padding-top: 15px;*/
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({ id, img, name, types, hidePokemon }) => {  
+const Card = ({ id, img, sprite, name, types, text, hidePokemon }) => {  
   const handleClick = event => hidePokemon()
   
   return (
@@ -16,9 +16,14 @@ const Card = ({ id, img, name, types, hidePokemon }) => {
       <div className='card-types'>
         {
           types.map((type, key) => {
-            return <div className='tag' key={key}><small>{type}</small></div>
+            return <div className='tag' key={key}><small>{type.toUpperCase()}</small></div>
           })
         }
+      </div>
+      <div className='card-text'>
+        <div className='card-text-box'>
+          <p style={{whiteSpace: 'pre-wrap'}}>{text}</p>
+        </div>
       </div>
     </div>
   )

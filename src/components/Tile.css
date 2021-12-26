@@ -10,7 +10,7 @@
     border-radius: 10px;
 }
 
-.tile img{
+.tile img {
     width: 120px;
     object-fit: contain;
 }
