@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 
+import Search from './components/Search'
 import Tile from './components/Tile'
 import Card from './components/Card'
 
 import { fetchPokemons, normalizePokemons } from './pokeapi'
 
 function App() {
-  let [pokemons, setPokemons] = useState([])
-  let [pokemon, setPokemon] = useState(null)
-  let [scrollY, setScrollY] = useState(0)
+  const [pokemons, setPokemons] = useState([])
+  const [pokemon, setPokemon] = useState(null)
+  const [search, setSearch] = useState('')
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(async () => {
     if (pokemon === null) {
@@ -26,7 +28,7 @@ function App() {
     if (cachedPokemons !== null) {
       setPokemons(JSON.parse(cachedPokemons))
     } else {
-      fetchPokemons()
+      fetchPokemons() // 151
       .then(collection => {
         const pokemons = normalizePokemons(collection)
         setPokemons(pokemons)
@@ -41,6 +43,7 @@ function App() {
   }
 
   const hidePokemon = () => setPokemon(null)
+  const searchPokemon = (value) => setSearch(value)
 
   if (pokemon !== null) {
     return <Card 
@@ -57,12 +60,21 @@ function App() {
   }
   
   return (
-    <div className='tiles'>
-      {
-        pokemons.map((pokemon, key) => {
-          return <Tile key={key} id={pokemon.id} img={pokemon.img} name={pokemon.name} showPokemon={showPokemon} />
-        })
-      }
+    <div className='app'>
+      <div className='tools'>
+        <Search search={search} searchPokemon={searchPokemon}/>
+      </div>
+      <div className='tiles'>
+        {
+          pokemons
+          .filter((pokemon) => {
+            return search === '' || pokemon.name.toLowerCase().includes(search.toLowerCase())
+          })
+          .map((pokemon, key) => {
+            return <Tile key={key} id={pokemon.id} img={pokemon.img} name={pokemon.name} showPokemon={showPokemon} />
+          })
+        }
+      </div>
     </div>
   )
 }

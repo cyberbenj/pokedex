@@ -10,17 +10,33 @@ p {
 }
 
 body {
-    background-color: #d90429;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    background-color: #d90429;
 }
 
-.tiles {
+.app {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    background-color: #d90429;
+    width: calc(100% - 30px);
+    height: calc(100% - 60px);
+    padding: 30px 15px;
+}
+
+.app .tools{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.app .tiles {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit, 160px);
     justify-content: center;
-    margin: 15px 0;
-    padding-bottom: 15px;
+    /* margin: 15px 0; */
 }
