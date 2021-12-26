@@ -1,8 +1,8 @@
 import React from 'react'
 import './Tag.css'
 
-const Tag = ({ name }) => (
-  <div className='tag'><small>{name.toUpperCase()}</small></div>
+const Tag = ({ id, name }) => (
+  <div className={`tag color-${id}`}><small>{name.toUpperCase()}</small></div>
 )
 
 export default Tag

@@ -20,7 +20,7 @@ function App() {
   })
 
   useEffect(() => {
-    //localStorage.clear()
+    localStorage.removeItem('pokemons')
     const cachedPokemons = localStorage.getItem('pokemons')
 
     if (cachedPokemons !== null) {
@@ -43,7 +43,17 @@ function App() {
   const hidePokemon = () => setPokemon(null)
 
   if (pokemon !== null) {
-    return <Card id={pokemon.id} img={pokemon.img} sprite={pokemon.sprite} name={pokemon.name} types={pokemon.types} text={pokemon.text} hidePokemon={hidePokemon} />
+    return <Card 
+      id={pokemon.id} 
+      img={pokemon.img} 
+      sprite={pokemon.sprite} 
+      name={pokemon.name} 
+      types={pokemon.types} 
+      height={pokemon.height} 
+      weight={pokemon.weight} 
+      text={pokemon.text} 
+      hidePokemon={hidePokemon} 
+    />
   }
   
   return (

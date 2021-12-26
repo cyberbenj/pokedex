@@ -1,12 +1,111 @@
 .tag {
     display: block;
-    background-color: rgba(255, 255, 255, .9);
-    border: 1px solid #ffffff;
-    color: rgba(0, 0, 0, .9);
-    padding: 0px 7px;
-    margin: 0 4px;
+    padding: 1px 7px;
+    margin: 0 3px;
     border-radius: 3px;
     min-width: 64px;
     text-align: center;
     font-size: small;
+    background-color: #777777;
+    color: #ffffff;
+}
+
+/* normal */
+.tag.color-1 {
+    background-color: #A8A878;
+}
+
+/* fighting */
+.tag.color-2 {
+    background-color: #C03028;
+}
+
+/* flying */
+.tag.color-3 {
+    background-color: #A890F0;
+}
+
+/* poison */
+.tag.color-4 {
+    background-color: #A040A0;
+}
+
+/* ground */
+.tag.color-5 {
+    background-color: #E0C068;
+}
+
+/* rock */
+.tag.color-6 {
+    background-color: #B8A038;
+}
+
+/* bug */
+.tag.color-7 {
+    background-color: #A8B820;
+}
+
+/* ghost */
+.tag.color-8 {
+    background-color: #705898;
+}
+
+/* steel */
+.tag.color-9 {
+    background-color: #B8B8D0;
+}
+
+/* fire */
+.tag.color-10 {
+    background-color: #F08030;
+}
+
+/* water */
+.tag.color-11 {
+    background-color: #6890F0;
+}
+
+/* grass */
+.tag.color-12 {
+    background-color: #78C850;
+}
+
+/* electric */
+.tag.color-13 {
+    background-color: #F8D030;
+}
+
+/* psychic */
+.tag.color-14 {
+    background-color: #F85888;
+}
+
+/* ice */
+.tag.color-15 {
+    background-color: #98D8D8;
+}
+
+/* dragon */
+.tag.color-16 {
+    background-color: #7038F8;
+}
+
+/* dark */
+.tag.color-17 {
+    background-color: #705848;
+}
+
+/* fairy */
+.tag.color-18 {
+    background-color: #EE99AC;
+}
+
+/* unknown */
+.tag.color-10001 {
+    background-color: #777777;
+}
+
+/* shadow */
+.tag.color-10002 {
+    background-color: #333333;
 }

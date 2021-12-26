@@ -9,6 +9,8 @@ const fetchPokemons = async (limit = 898) => {
         query pokedex {
           pokemons: pokemon_v2_pokemon(limit: ${limit}) {
             id
+            height
+            weight
             specy: pokemon_v2_pokemonspecy {
               evolution_chain_id
               order
@@ -20,7 +22,8 @@ const fetchPokemons = async (limit = 898) => {
               }
             }
             types: pokemon_v2_pokemontypes {
-              type: pokemon_v2_type {
+              type_id
+              type_names: pokemon_v2_type {
                 names: pokemon_v2_typenames(where: {language_id: {_eq: 5}}) {
                   name
                 }
@@ -40,10 +43,17 @@ const normalizePokemons = (collection) => {
   for(let item of collection){
     pokemons.push({
       id: item.id,
+      height: item.height,
+      weight: item.weight,
       order: item.specy.order,
       evolution_id: item.specy.evolution_chain_id,
       name: item.specy.names[0].name,
-      types: item.types.map((types) => types.type.names[0].name),
+      types: item.types.map((type) => {
+        return {
+          id: type.type_id,
+          name: type.type_names.names[0].name
+        }
+      }),
       text: item.specy.texts[0] ? item.specy.texts[0].text : '',
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`,
       sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.id}.png`

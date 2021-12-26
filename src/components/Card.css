@@ -42,16 +42,18 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     padding: 15px 0;
+    /* min-height: 300px; */
+    min-height: 200px;
+    max-height: 400px;
 }
 
 .card-infos .card-name {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px 0;
 }
 
 .card-infos .card-name p{
@@ -64,11 +66,30 @@
     opacity: 0.5;
 }
 
-.card-infos .card-types {
+.card-infos .card-name .card-types {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.card-infos .card-specs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-infos .card-specs .spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px;
+    color: #ffffff;
+    font-size: large;
+}
+
+.card-infos .card-specs .spec span {
+    opacity: 0.5;
 }
 
 .card-infos .card-text {
@@ -76,9 +97,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    padding: 15px 0;
-    max-height: 200px;
 }
 
 .card-infos .card-text p {
