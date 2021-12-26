@@ -20,10 +20,19 @@ function App() {
   })
 
   useEffect(() => {
-    fetchPokemons(151)
-    .then(pokemons => {
-      setPokemons(normalizePokemons(pokemons))
-    })
+    //localStorage.clear()
+    const cachedPokemons = localStorage.getItem('pokemons')
+
+    if (cachedPokemons !== null) {
+      setPokemons(JSON.parse(cachedPokemons))
+    } else {
+      fetchPokemons()
+      .then(collection => {
+        const pokemons = normalizePokemons(collection)
+        setPokemons(pokemons)
+        localStorage.setItem('pokemons', JSON.stringify(pokemons))
+      })
+    }
   }, [])
 
   const showPokemon = async (id) => {

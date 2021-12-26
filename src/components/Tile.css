@@ -2,15 +2,21 @@
     display: flex;
     width: 160px;
     height: 160px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background: linear-gradient(#eef, #fee);
     border: 1px solid #fff;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.tile span {
+    color: rgba(0, 0, 0, .7);
 }
 
 .tile img {
-    width: 120px;
+    width: 100px;
     object-fit: contain;
 }

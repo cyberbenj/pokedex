@@ -11,6 +11,7 @@ const Tile = ({ id, img, name, showPokemon }) => {
         alt={name}
         onClick={handleClick}
       />
+      <span className='name'>{name}</span>
     </div>
   )
 }
