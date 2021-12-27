@@ -1,3 +1,5 @@
+const DATA_VERSION = '1.0'
+
 const fetchPokemons = async (limit = 898) => {
   return fetch('https://beta.pokeapi.co/graphql/v1beta', {
     method: 'POST',
@@ -62,4 +64,22 @@ const normalizePokemons = (collection) => {
   return pokemons
 }
 
-export { fetchPokemons, normalizePokemons }
+const getPokemons = async () => {
+  const storedPokemons = (localStorage.getItem('data_version') === DATA_VERSION) 
+  ? localStorage.getItem('pokemons') 
+  : null
+
+  if (storedPokemons !== null) {
+    return JSON.parse(storedPokemons)
+  } else {
+    return fetchPokemons(251) // 151, 251, 386, 493, 649, 721, 809, 898
+    .then(pokemons => normalizePokemons(pokemons))
+    .then(pokemons => {
+      localStorage.setItem('data_version', DATA_VERSION)
+      localStorage.setItem('pokemons', JSON.stringify(pokemons))
+      return pokemons
+    })
+  }
+}
+
+export { getPokemons }

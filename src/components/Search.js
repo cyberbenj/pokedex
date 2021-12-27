@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './Search.css'
 
-const Search = ({ search, searchPokemon }) => {
-  const [value, setValue] = useState(search)
+//const Search = ({ search, searchPokemon }) => {
+const Search = ({ searchPokemon }) => {
+  //const [value, setValue] = useState(search)
+  const [value, setValue] = useState('')
   
   const handleChange = event => {
     const newValue = event.target.value
