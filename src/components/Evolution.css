@@ -1,0 +1,15 @@
+.evolution {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* .evolution img {
+    width: 50px;
+} */
+
+.arrow {
+    color: rgba(255, 255, 255, .5);
+}

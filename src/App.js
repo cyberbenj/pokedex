@@ -29,7 +29,7 @@ function App() {
       document.body.style.overflowY = 'hidden'
       appRef.current.style.display = 'hidden'
     }
-  }, [pokemon])
+  }, [pokemon, scrollY])
 
   const showPokemon = async (id) => setPokemon(pokemons[id-1])
   const hidePokemon = () => setPokemon(null)
@@ -42,12 +42,13 @@ function App() {
         <Card 
           id={pokemon.id} 
           img={pokemon.img} 
-          sprite={pokemon.sprite} 
           name={pokemon.name} 
           types={pokemon.types} 
+          evolutions={pokemon.evolutions}
           height={pokemon.height} 
           weight={pokemon.weight} 
           text={pokemon.text} 
+          showPokemon={showPokemon}
           hidePokemon={hidePokemon} 
         />
       }

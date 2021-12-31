@@ -1,8 +1,9 @@
 import React from 'react'
 import './Card.css'
 import Tag from './Tag'
+import Evolution from './Evolution'
 
-const Card = ({ id, img, sprite, name, types, height, weight, text, hidePokemon }) => {  
+const Card = ({ id, img, name, types, evolutions, height, weight, text, showPokemon, hidePokemon }) => {    
   const handleClick = event => hidePokemon()
   
   return (
@@ -36,6 +37,13 @@ const Card = ({ id, img, sprite, name, types, height, weight, text, hidePokemon 
         </div>
         <div className='card-text'>
           <p style={{whiteSpace: 'pre-wrap'}}>{text}</p>
+        </div>
+        <div className='card-evolutions'>
+          {
+            evolutions.map((evolution, key) => {
+              return <Evolution key={key} id={evolution.id} name={evolution.name} sprite={evolution.sprite} showPokemon={showPokemon} />
+            })
+          }
         </div>
       </div>
     </div>
