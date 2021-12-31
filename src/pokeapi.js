@@ -1,8 +1,7 @@
 const DATA_VERSION = '1.00'
 const DATA_LANGUAGE_ID = 5
-const DATA_LIMIT =  898 // 151, 251, 386, 493, 649, 721, 809, 898
 
-const fetchPokemons = async (limit) => {
+const fetchPokemons = async () => {
   return fetch('https://beta.pokeapi.co/graphql/v1beta', {
     method: 'POST',
     headers: {
@@ -11,7 +10,7 @@ const fetchPokemons = async (limit) => {
     body: JSON.stringify({
       query: `
         query pokedex {
-          pokemons: pokemon_v2_pokemon(limit: ${limit}) {
+          pokemons: pokemon_v2_pokemon(limit: 898) {
             id
             height
             weight
@@ -105,8 +104,7 @@ const getPokemons = async () => {
   const storedPokemons = 
   (
     localStorage.getItem('data_version') === DATA_VERSION &&
-    localStorage.getItem('data_language_id') === DATA_LANGUAGE_ID &&
-    localStorage.getItem('data_limit') === DATA_LIMIT
+    localStorage.getItem('data_language_id') === DATA_LANGUAGE_ID
   ) 
   ? localStorage.getItem('pokemons') 
   : null
@@ -114,12 +112,11 @@ const getPokemons = async () => {
   if (storedPokemons !== null) {
     return JSON.parse(storedPokemons)
   } else {
-    return fetchPokemons(DATA_LIMIT)
+    return fetchPokemons()
     .then(pokemons => normalizePokemons(pokemons))
     .then(pokemons => {
       localStorage.setItem('data_version', DATA_VERSION)
       localStorage.setItem('data_language_id', DATA_LANGUAGE_ID)
-      localStorage.setItem('data_limit', DATA_LIMIT)
       localStorage.setItem('pokemons', JSON.stringify(pokemons))
       return pokemons
     })

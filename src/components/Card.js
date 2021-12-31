@@ -3,23 +3,23 @@ import './Card.css'
 import Tag from './Tag'
 import Evolution from './Evolution'
 
-const Card = ({ id, img, name, types, evolutions, height, weight, text, showPokemon, hidePokemon }) => {    
+const Card = ({ pokemon, showPokemon, hidePokemon }) => {
   const handleClick = event => hidePokemon()
   
   return (
     <div className='card'>
       <div className='close-button' onClick={handleClick}>&#x2715;</div>
       <div className='card-image'>
-        <img src={img} alt={name} />
+        <img src={pokemon.img} alt={pokemon.name} />
       </div>
       <div className='card-infos'>
         <div className='card-name'>
           <p>
-            {name} <span className='number'>No.{id.toString().padStart(3, '0')}</span>
+            {pokemon.name} <span className='number'>#{pokemon.id.toString().padStart(3, '0')}</span>
           </p>
           <div className='card-types'>
             {
-              types.map((type, key) => {
+              pokemon.types.map((type, key) => {
                 return <Tag key={key} id={type.id} name={type.name}/>
               })
             }
@@ -27,20 +27,20 @@ const Card = ({ id, img, name, types, evolutions, height, weight, text, showPoke
         </div>
         <div className='card-specs'>
           <div className='spec'>
-            <span>Poids</span>
-            {(weight / 10).toFixed(1)} kg
+            <span>{'Weight'.translate('fr')}</span>
+            {(pokemon.weight / 10).toFixed(1)} kg
           </div>
           <div className='spec'>
-            <span>Taille</span>
-            {(height / 10).toFixed(1)} m
+            <span>{'Height'.translate('fr')}</span>
+            {(pokemon.height / 10).toFixed(1)} m
           </div>
         </div>
         <div className='card-text'>
-          <p style={{whiteSpace: 'pre-wrap'}}>{text}</p>
+          <p style={{whiteSpace: 'pre-wrap'}}>{pokemon.text}</p>
         </div>
         <div className='card-evolutions'>
           {
-            evolutions.map((evolution, key) => {
+            pokemon.evolutions.map((evolution, key) => {
               return <Evolution key={key} id={evolution.id} name={evolution.name} sprite={evolution.sprite} showPokemon={showPokemon} />
             })
           }

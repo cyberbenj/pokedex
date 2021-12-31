@@ -6,9 +6,10 @@
     cursor: pointer;
 }
 
-/* .evolution img {
-    width: 50px;
-} */
+.evolution img {
+    object-fit: contain;
+    image-rendering: pixelated;
+}
 
 .arrow {
     color: rgba(255, 255, 255, .5);

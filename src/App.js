@@ -40,14 +40,7 @@ function App() {
       {
         pokemon !== null &&
         <Card 
-          id={pokemon.id} 
-          img={pokemon.img} 
-          name={pokemon.name} 
-          types={pokemon.types} 
-          evolutions={pokemon.evolutions}
-          height={pokemon.height} 
-          weight={pokemon.weight} 
-          text={pokemon.text} 
+          pokemon={pokemon}
           showPokemon={showPokemon}
           hidePokemon={hidePokemon} 
         />
@@ -65,9 +58,7 @@ function App() {
             .map((pokemon, key) => {
               return <Tile 
                 key={key} 
-                id={pokemon.id} 
-                img={pokemon.img} 
-                name={pokemon.name} 
+                pokemon={pokemon}
                 showPokemon={showPokemon} 
               />
             })

@@ -17,7 +17,7 @@ const Search = ({ searchPokemon }) => {
       <input 
         type='text'
         value={value}
-        placeholder='Rechercher un pokemon' 
+        placeholder={'Search pokemons'.translate('fr')}
         spellCheck='false' 
         autoComplete='off'
         onChange={handleChange}
