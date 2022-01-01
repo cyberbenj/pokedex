@@ -1,10 +1,10 @@
 import React from 'react'
-import './Modal.css'
+import './Settings.css'
 
-const Modal = ({ title, children, onClose }) => {
+const Settings = ({ title, children, onClose }) => {
   return (
-    <div className='modal-container'>
-      <div className='modal'>
+    <div className='settings-container'>
+      <div className='settings'>
         <div className='header'>
           <div className='title'>{title}</div>
         </div>
@@ -16,4 +16,4 @@ const Modal = ({ title, children, onClose }) => {
   )
 }
 
-export default Modal
+export default Settings
