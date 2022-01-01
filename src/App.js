@@ -25,17 +25,17 @@ function App() {
     .then(pokemons => setPokemons(pokemons))
   }, [dataLanguageId])
 
-  // disable scroll for modal parent
   useEffect(() => {
-    if (pokemon === null && !settings) {
-      document.body.style.overflowY = ''
+    const modal = pokemon !== null || settings
+
+    if (modal) {
+      setScrollY(window.scrollY)
+      appRef.current.style.display = 'none'
+    } else {
       appRef.current.style.display = ''
       window.scrollTo(0, scrollY)
-    } else {
-      setScrollY(window.scrollY)
-      document.body.style.overflowY = 'hidden'
-      appRef.current.style.display = 'hidden'
     }
+
   }, [pokemon, settings, scrollY])
 
   const showSettings = () => setSettings(!settings)

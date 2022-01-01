@@ -1,0 +1,38 @@
+[
+    {
+        "code": "fr",
+        "data_language_id": 5,
+        "flag_code": "fr",
+        "name": "Français"
+    },
+    {
+        "code": "en",
+        "data_language_id": 9,
+        "flag_code": "gb",
+        "name": "English"
+    },
+    {
+        "code": "jp",
+        "data_language_id": 1,
+        "flag_code": "jp",
+        "name": "日本語"
+    },
+    {
+        "code": "kr",
+        "data_language_id": 3,
+        "flag_code": "kr",
+        "name": "한국어"
+    },
+    {
+        "code": "de",
+        "data_language_id": 6,
+        "flag_code": "de",
+        "name": "Deutsch"
+    },
+    {
+        "code": "es",
+        "data_language_id": 7,
+        "flag_code": "es",
+        "name": "Español"
+    }
+]

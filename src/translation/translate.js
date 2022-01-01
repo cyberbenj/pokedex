@@ -1,5 +1,3 @@
-'use strict'
-
 const TRANSLATION = require('./translation.json')
 
 String.prototype.translate = function(language, binds) {

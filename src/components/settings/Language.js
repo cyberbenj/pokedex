@@ -3,8 +3,7 @@ import './Language.css'
 
 const Language = ({ checked, language, setLanguage }) => {
 
-  const { code, name, flag_code } = language
-
+  const { name, flag_code } = language
   const handleClick = () => setLanguage(language)
 
   return (
