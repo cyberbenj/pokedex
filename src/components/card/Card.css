@@ -33,7 +33,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     padding: 15px 0;
-    max-height: 400px;
+    /* max-height: 400px; */
 }
 
 .card-infos .card-name {
