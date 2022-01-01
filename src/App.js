@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 import { getPokemons } from './pokeapi'
+import { LangContextProvider } from './LangContext'
 
 import Search from './components/Search'
 import Settings from './components/settings/Settings'
@@ -15,15 +16,18 @@ function App() {
   const [settings, setSettings] = useState(false)
   const [search, setSearch] = useState('')
   const [scrollY, setScrollY] = useState(0)
+  const [dataLanguageId, setDataLanguageId] = useState(localStorage.getItem('data_language_id') || 5)
 
   const appRef = useRef()
 
   useEffect(() => {
-    getPokemons().then(pokemons => setPokemons(pokemons))
-  }, [])
+    getPokemons(dataLanguageId)
+    .then(pokemons => setPokemons(pokemons))
+  }, [dataLanguageId])
 
+  // disable scroll for modal parent
   useEffect(() => {
-    if (pokemon === null) {
+    if (pokemon === null && !settings) {
       document.body.style.overflowY = ''
       appRef.current.style.display = ''
       window.scrollTo(0, scrollY)
@@ -32,19 +36,20 @@ function App() {
       document.body.style.overflowY = 'hidden'
       appRef.current.style.display = 'hidden'
     }
-  }, [pokemon, scrollY])
+  }, [pokemon, settings, scrollY])
 
   const showSettings = () => setSettings(!settings)
   const showPokemon = async (id) => setPokemon(pokemons[id-1])
   const hidePokemon = () => setPokemon(null)
   const searchPokemon = (value) => setSearch(value)
-
-  if (settings) {
-    return <Settings title={'Settings'.translate('fr')} />
-  }
+  const changeDataLanguage = async (id) => setDataLanguageId(id)
 
   return (
-    <>
+    <LangContextProvider>
+      {
+        settings &&
+        <Settings showSettings={showSettings} changeDataLanguage={changeDataLanguage} />
+      }
       {
         pokemon !== null &&
         <Card 
@@ -76,7 +81,7 @@ function App() {
           }
         </div>
       </div>
-    </>
+    </LangContextProvider>
   )
 }
 

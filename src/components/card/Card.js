@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Card.css'
+
+import { LangContext } from '../../LangContext'
 
 import CloseButton from './CloseButton'
 import Tag from './Tag'
@@ -7,6 +9,7 @@ import Evolution from './Evolution'
 
 const Card = ({ pokemon, showPokemon, hidePokemon }) => {
   const { id, name, img, types, weight, height, text, evolutions } = pokemon
+  const { lang } = useContext(LangContext)
 
   return (
     <div className='card'>
@@ -35,16 +38,16 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
         </div>
         <div className='card-specs'>
           <div className='spec'>
-            <span>{'Weight'.translate('fr')}</span>
+            <span>{'Weight'.translate(lang)}</span>
             {(weight / 10).toFixed(1)} kg
           </div>
           <div className='spec'>
-            <span>{'Height'.translate('fr')}</span>
+            <span>{'Height'.translate(lang)}</span>
             {(height / 10).toFixed(1)} m
           </div>
         </div>
         <div className='card-text'>
-          <p style={{whiteSpace: 'pre-wrap'}}>{text}</p>
+          <p>{text}</p>
         </div>
         <div className='card-evolutions'>
           {
@@ -67,3 +70,5 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
 }
 
 export default Card
+
+//<p style={{whiteSpace: 'pre-wrap'}}>{text}</p>

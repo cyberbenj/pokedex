@@ -8,6 +8,7 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, .2);
 }
 
 .settings {
@@ -24,4 +25,39 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    height: 48px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.settings .header .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings .header .title span {
+    font-weight: bold;
+}
+
+.settings .header .button {
+    cursor: pointer;
+}
+
+.settings .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 30px);
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.settings .body .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

@@ -2,6 +2,12 @@
     "Search pokemons": {
         "fr": "Rechercher un pokemon"
     },
+    "Settings": {
+        "fr": "Paramètres"
+    },
+    "Language": {
+        "fr": "Langue"
+    },
     "Weight": { 
         "fr": "Poids"
     },

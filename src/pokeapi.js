@@ -1,7 +1,6 @@
 const DATA_VERSION = '1.00'
-const DATA_LANGUAGE_ID = 5
 
-const fetchPokemons = async () => {
+const fetchPokemons = async (language_id) => {
   return fetch('https://beta.pokeapi.co/graphql/v1beta', {
     method: 'POST',
     headers: {
@@ -15,31 +14,25 @@ const fetchPokemons = async () => {
             height
             weight
             specy: pokemon_v2_pokemonspecy {
-              names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 5}}) {
+              names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${language_id}}}) {
                 name
               }
-              texts: pokemon_v2_pokemonspeciesflavortexts(where: {language_id: {_eq: 5}}, distinct_on: pokemon_species_id) {
+              texts: pokemon_v2_pokemonspeciesflavortexts(where: {language_id: {_eq: ${language_id}}}, distinct_on: pokemon_species_id) {
                 text: flavor_text
               }
               evolutions: pokemon_v2_evolutionchain {
                 species: pokemon_v2_pokemonspecies(order_by: {order: asc}) {
                   id
-                  names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 5}}) {
+                  names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${language_id}}}) {
                     name
                   }
-                }
-              }
-              habitat: pokemon_v2_pokemonhabitat {
-                id
-                names: pokemon_v2_pokemonhabitatnames(where: {language_id: {_eq: 5}}) {
-                  name
                 }
               }
             }
             types: pokemon_v2_pokemontypes {
               type_id
               type_names: pokemon_v2_type {
-                names: pokemon_v2_typenames(where: {language_id: {_eq: 5}}) {
+                names: pokemon_v2_typenames(where: {language_id: {_eq: ${language_id}}}) {
                   name
                 }
               }
@@ -48,7 +41,7 @@ const fetchPokemons = async () => {
               id
               base_stat
               stat_names: pokemon_v2_stat {
-                names: pokemon_v2_statnames(where: {language_id: {_eq: 5}}) {
+                names: pokemon_v2_statnames(where: {language_id: {_eq: ${language_id}}}) {
                   name
                 }
               }
@@ -73,7 +66,6 @@ const normalizePokemons = (collection) => {
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`,
       sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.id}.png`,
       text: item.specy.texts[0] ? item.specy.texts[0].text : '',
-      habitat: item.specy.habitat ? item.specy.habitat.names[0].name : '',
       evolutions: item.specy.evolutions.species.map((specy) => {
         return {
           id: specy.id,
@@ -100,11 +92,11 @@ const normalizePokemons = (collection) => {
   return pokemons
 }
 
-const getPokemons = async () => {
+const getPokemons = async (data_language_id) => {
   const storedPokemons = 
   (
     localStorage.getItem('data_version') === DATA_VERSION &&
-    localStorage.getItem('data_language_id') === DATA_LANGUAGE_ID
+    localStorage.getItem('data_language_id') === data_language_id
   ) 
   ? localStorage.getItem('pokemons') 
   : null
@@ -112,11 +104,11 @@ const getPokemons = async () => {
   if (storedPokemons !== null) {
     return JSON.parse(storedPokemons)
   } else {
-    return fetchPokemons()
+    return fetchPokemons(data_language_id)
     .then(pokemons => normalizePokemons(pokemons))
     .then(pokemons => {
       localStorage.setItem('data_version', DATA_VERSION)
-      localStorage.setItem('data_language_id', DATA_LANGUAGE_ID)
+      localStorage.setItem('data_language_id', data_language_id)
       localStorage.setItem('pokemons', JSON.stringify(pokemons))
       return pokemons
     })
