@@ -3,13 +3,13 @@ import './Evolution.css'
 
 const Evolution = ({ id, sprite, name, showPokemon }) => {
   const handleClick = (id) => showPokemon(id)
-  
+
   return (
     <>
       <div className='evolution' onClick={() => handleClick(id)}>
-        <img src={sprite} alt={name}/>
+        <img src={sprite} alt={name} />
       </div>
-      <span className='arrow fa fa-arrow-right'></span>
+      <span className='arrow fa fa-arrow-right' />
     </>
   )
 }

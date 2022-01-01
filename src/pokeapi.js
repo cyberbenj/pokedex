@@ -1,10 +1,10 @@
 const DATA_VERSION = '1.00'
 
-const fetchPokemons = async (language_id) => {
-  return fetch('https://beta.pokeapi.co/graphql/v1beta', {
+const fetchPokemons = async (languageId) => {
+  return window.fetch('https://beta.pokeapi.co/graphql/v1beta', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       query: `
@@ -14,16 +14,16 @@ const fetchPokemons = async (language_id) => {
             height
             weight
             specy: pokemon_v2_pokemonspecy {
-              names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${language_id}}}) {
+              names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${languageId}}}) {
                 name
               }
-              texts: pokemon_v2_pokemonspeciesflavortexts(where: {language_id: {_eq: ${language_id}}}, distinct_on: pokemon_species_id) {
+              texts: pokemon_v2_pokemonspeciesflavortexts(where: {language_id: {_eq: ${languageId}}}, distinct_on: pokemon_species_id) {
                 text: flavor_text
               }
               evolutions: pokemon_v2_evolutionchain {
                 species: pokemon_v2_pokemonspecies(order_by: {order: asc}) {
                   id
-                  names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${language_id}}}) {
+                  names: pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: ${languageId}}}) {
                     name
                   }
                 }
@@ -32,7 +32,7 @@ const fetchPokemons = async (language_id) => {
             types: pokemon_v2_pokemontypes {
               type_id
               type_names: pokemon_v2_type {
-                names: pokemon_v2_typenames(where: {language_id: {_eq: ${language_id}}}) {
+                names: pokemon_v2_typenames(where: {language_id: {_eq: ${languageId}}}) {
                   name
                 }
               }
@@ -41,23 +41,23 @@ const fetchPokemons = async (language_id) => {
               id
               base_stat
               stat_names: pokemon_v2_stat {
-                names: pokemon_v2_statnames(where: {language_id: {_eq: ${language_id}}}) {
+                names: pokemon_v2_statnames(where: {language_id: {_eq: ${languageId}}}) {
                   name
                 }
               }
             }
           }
         }
-      `,
+      `
     })
   })
-  .then(response => response.json())
-  .then(json => json.data.pokemons)
+    .then(response => response.json())
+    .then(json => json.data.pokemons)
 }
 
 const normalizePokemons = (collection) => {
   const pokemons = []
-  for(let item of collection){
+  for (const item of collection) {
     pokemons.push({
       id: item.id,
       name: item.specy.names[0].name,
@@ -92,26 +92,25 @@ const normalizePokemons = (collection) => {
   return pokemons
 }
 
-const getPokemons = async (data_language_id) => {
-  const storedPokemons = 
-  (
-    localStorage.getItem('data_version') === DATA_VERSION &&
-    localStorage.getItem('data_language_id') === data_language_id
-  ) 
-  ? localStorage.getItem('pokemons') 
-  : null
+const getPokemons = async (dataLanguageId) => {
+  const storedPokemons = (
+    window.localStorage.getItem('data_version') === DATA_VERSION &&
+    window.localStorage.getItem('data_language_id') === dataLanguageId
+  )
+    ? window.localStorage.getItem('pokemons')
+    : null
 
   if (storedPokemons !== null) {
     return JSON.parse(storedPokemons)
   } else {
-    return fetchPokemons(data_language_id)
-    .then(pokemons => normalizePokemons(pokemons))
-    .then(pokemons => {
-      localStorage.setItem('data_version', DATA_VERSION)
-      localStorage.setItem('data_language_id', data_language_id)
-      localStorage.setItem('pokemons', JSON.stringify(pokemons))
-      return pokemons
-    })
+    return fetchPokemons(dataLanguageId)
+      .then(pokemons => normalizePokemons(pokemons))
+      .then(pokemons => {
+        window.localStorage.setItem('data_version', DATA_VERSION)
+        window.localStorage.setItem('data_language_id', dataLanguageId)
+        window.localStorage.setItem('pokemons', JSON.stringify(pokemons))
+        return pokemons
+      })
   }
 }
 

@@ -10,10 +10,10 @@ const Settings = ({ showSettings, changeDataLanguage }) => {
   const { lang, setLang } = useContext(LangContext)
 
   const setLanguage = (language) => {
-    const { code, data_language_id } = language 
+    const { code, dataLanguageId } = language
     setLang(code)
-    localStorage.setItem('app_lang', code)
-    changeDataLanguage(data_language_id)
+    window.localStorage.setItem('app_lang', code)
+    changeDataLanguage(dataLanguageId)
   }
 
   return (
@@ -24,7 +24,7 @@ const Settings = ({ showSettings, changeDataLanguage }) => {
             <span>{'Settings'.translate(lang)}</span>
           </div>
           <div className='button' onClick={showSettings}>
-            <span className='fa fa-times'></span>
+            <span className='fa fa-times' />
           </div>
         </div>
         <div className='body'>

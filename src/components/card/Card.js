@@ -13,7 +13,7 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
 
   return (
     <div className='card'>
-      <CloseButton hidePokemon={hidePokemon}/>
+      <CloseButton hidePokemon={hidePokemon} />
       <div className='card-image'>
         <img src={img} alt={name} />
       </div>
@@ -26,10 +26,10 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
             {
               types.map((type, key) => {
                 return (
-                  <Tag 
-                    key={key} 
-                    id={type.id} 
-                    name={type.name} 
+                  <Tag
+                    key={key}
+                    id={type.id}
+                    name={type.name}
                   />
                 )
               })
@@ -53,12 +53,12 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
           {
             evolutions.map((evolution, key) => {
               return (
-                <Evolution 
-                  key={key} 
-                  id={evolution.id} 
-                  name={evolution.name} 
-                  sprite={evolution.sprite} 
-                  showPokemon={showPokemon} 
+                <Evolution
+                  key={key}
+                  id={evolution.id}
+                  name={evolution.name}
+                  sprite={evolution.sprite}
+                  showPokemon={showPokemon}
                 />
               )
             })
@@ -70,5 +70,3 @@ const Card = ({ pokemon, showPokemon, hidePokemon }) => {
 }
 
 export default Card
-
-//<p style={{whiteSpace: 'pre-wrap'}}>{text}</p>

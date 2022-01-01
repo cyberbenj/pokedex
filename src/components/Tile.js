@@ -4,11 +4,11 @@ import './Tile.css'
 const Tile = ({ pokemon, showPokemon }) => {
   const { id, name, img } = pokemon
   const handleClick = event => showPokemon(id)
-  
+
   return (
     <div className='tile'>
-      <img 
-        src={img} 
+      <img
+        src={img}
         alt={name}
         onClick={handleClick}
       />

@@ -3,10 +3,10 @@ import './SettingsIcon.css'
 
 const SettingsIcon = ({ showSettings }) => {
   const handleClick = event => showSettings()
-  
+
   return (
     <div className='settings-icon' onClick={handleClick}>
-      <span className='fa fa-ellipsis-h'></span>
+      <span className='fa fa-ellipsis-h' />
     </div>
   )
 }

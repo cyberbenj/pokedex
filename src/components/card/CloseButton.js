@@ -7,7 +7,7 @@ const CloseButton = ({ hidePokemon }) => {
   return (
     <div className='hitbox' onClick={handleClick}>
       <div className='close-button'>
-        <span className='fa fa-times'></span>
+        <span className='fa fa-times' />
       </div>
     </div>
   )

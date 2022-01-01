@@ -6,7 +6,7 @@ import { LangContext } from '../LangContext'
 const Search = ({ searchPokemon }) => {
   const [value, setValue] = useState('')
   const inputRef = useRef()
-  
+
   const handleChange = event => {
     const newValue = event.target.value
     setValue(newValue)
@@ -21,16 +21,16 @@ const Search = ({ searchPokemon }) => {
 
   return (
     <div className='search' onClick={handleclick}>
-      <input 
+      <input
         type='text'
         value={value}
         placeholder={'Search pokemons'.translate(lang)}
-        spellCheck='false' 
+        spellCheck='false'
         autoComplete='off'
         onChange={handleChange}
         ref={inputRef}
       />
-      <span className='fa fa-search'></span>
+      <span className='fa fa-search' />
     </div>
   )
 }
