@@ -3,11 +3,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    /* background-color: #ffffff; */
     background-color: rgba(0, 0, 0, .2);
     border-radius: 20px;
-    width: 340px;
+    width: 290px;
     height: 36px;
+    cursor: text;
 }
 
 .search input {

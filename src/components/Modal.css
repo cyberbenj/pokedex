@@ -1,0 +1,30 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    max-width: 500px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.modal .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}

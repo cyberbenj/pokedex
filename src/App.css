@@ -25,12 +25,14 @@ body {
     padding: 30px 15px;
 }
 
-.app .tools{
+.app .tools {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding-bottom: 30px;
+    width: 340px;
+    align-self: center;
 }
 
 .app .tiles {

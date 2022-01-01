@@ -1,20 +1,3 @@
-.close-button {
-    position: fixed;
-    right: 15px;
-    top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    background-color: rgba(0, 0, 0, .7);
-    color: rgba(255, 255, 255, .7);
-    cursor: pointer;
-    font-weight: bold;
-}
-
 .card {
     position: fixed;
     z-index: 1;

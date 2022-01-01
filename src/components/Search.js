@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './Search.css'
 
-//const Search = ({ search, searchPokemon }) => {
 const Search = ({ searchPokemon }) => {
-  //const [value, setValue] = useState(search)
   const [value, setValue] = useState('')
+  const inputRef = useRef()
   
   const handleChange = event => {
     const newValue = event.target.value
@@ -12,8 +11,12 @@ const Search = ({ searchPokemon }) => {
     searchPokemon(newValue)
   }
 
+  const handleclick = event => {
+    inputRef.current.focus()
+  }
+
   return (
-    <div className='search'>
+    <div className='search' onClick={handleclick}>
       <input 
         type='text'
         value={value}
@@ -21,6 +24,7 @@ const Search = ({ searchPokemon }) => {
         spellCheck='false' 
         autoComplete='off'
         onChange={handleChange}
+        ref={inputRef}
       />
       <span className='fa fa-search'></span>
     </div>

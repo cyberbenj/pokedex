@@ -2,16 +2,17 @@ import React from 'react'
 import './Tile.css'
 
 const Tile = ({ pokemon, showPokemon }) => {
-  const handleClick = event => showPokemon(pokemon.id)
+  const { id, name, img } = pokemon
+  const handleClick = event => showPokemon(id)
   
   return (
     <div className='tile'>
       <img 
-        src={pokemon.img} 
-        alt={pokemon.name}
+        src={img} 
+        alt={name}
         onClick={handleClick}
       />
-      <span className='name'>{pokemon.name}</span>
+      <span className='name'>{name}</span>
     </div>
   )
 }
