@@ -35,7 +35,7 @@ const App = () => {
       appRef.current.style.display = ''
       window.scrollTo(0, scrollY)
     }
-  }, [pokemon, settings, scrollY])
+  }, [pokemon, settings])
 
   const showSettings = () => setSettings(!settings)
   const showPokemon = async (id) => setPokemon(pokemons[id - 1])
